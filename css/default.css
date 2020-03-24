@@ -1,0 +1,47 @@
+body {
+		background-color:#111;
+		color:#ddd;
+		font-family: helvetica;
+		padding:1%;
+}
+
+a {
+	color:#fcba03;
+	text-decoration: none;
+	
+}
+
+a:visited {
+	
+	color:#fcba03;
+	
+}
+
+a:hover {
+	
+	color:#fcdf03;
+	
+}
+
+p {
+	
+	padding:1%;
+	padding-left:2%;
+	margin-left:4%;
+	margin-right:4%;
+	background-color:#333;
+	border:2px solid #ddd;
+	
+}
+
+h3 { 
+	
+	padding-left:2%;
+
+}
+
+.addform {
+	
+	margin-left:5%;
+	
+}

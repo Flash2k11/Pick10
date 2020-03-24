@@ -1,5 +1,6 @@
 <?php
 
+	require_once'includes/header.php';
 	require_once'conf/db_conf.php';
 	
 	if(!isset($_GET['year'])) {die('Invalid season selected');}
@@ -9,31 +10,6 @@
 	
 	
 	echo'<h1>PlanetF1 Pick 10 Season '.$year.'</h1>';
-	
-	echo'<h3>Current Players</h3>
-			<p>';
-			
-	$query2 = mysqli_query($connection, 'SELECT * FROM players WHERE year = \''.$year.'\'');
-	while ($player = mysqli_fetch_assoc($query2)) {
-		
-		echo'<a href=\'player.php?p='.$player['name'].'\'>'.$player['name'].'</a><br/>';
-		
-	}
-	
-	echo'</p>';
-	
-	echo'<h3>View completed race results:</h3>
-			<p>';
-	
-	$query = mysqli_query($connection, 'SELECT * FROM grand_prix WHERE year = \''.$year.'\' AND 1st != \'\' ');
-	while ($overview = mysqli_fetch_assoc($query)){
-		
-
-				echo'<a href=\'scores.php?gp='.$overview['venue'].'\'>'.$overview['venue'].'</a><br/>';
-				
-	}
-	
-	echo' </p>';
 	
 	echo '<h3>Current Standings</h3>
 			<p>';
@@ -49,7 +25,7 @@
 		
 	}
 			
-		$query4 = mysqli_query($connection, 'SELECT * FROM players ORDER BY total_score DESC');
+		$query4 = mysqli_query($connection, 'SELECT * FROM players WHERE year =\''.$year.'\' ORDER BY total_score DESC');
 		$a = 1;
 		while($total_score = mysqli_fetch_assoc($query4)) {
 		
@@ -64,6 +40,45 @@
 
 	
 	echo'</p>';
+	
+	
+	
+	echo'<h3>View completed race results:</h3>
+				<p>';
+	
+	$query = mysqli_query($connection, 'SELECT * FROM grand_prix WHERE year = \''.$year.'\' AND 1st != \'\' ');
+	while ($overview = mysqli_fetch_assoc($query)){
+		
+
+				echo'<a href=\'scores.php?gp='.$overview['venue'].'\'>'.$overview['venue'].' GP</a><br/>';
+				
+	}
+	
+	echo' </p>';
+	
+	echo'<h3>Upcoming races</h3>
+			<p>';
+			
+	$query5 = mysqli_query($connection, 'SELECT * FROM grand_prix WHERE year = \''.$year.'\' AND 1st = \'\' ');
+	while ($upcoming = mysqli_fetch_assoc($query5)){
+		
+		echo''.$upcoming['venue'].' GP<br/>';
+		
+	}
+	
+	echo'</p>';
+	
+	
+	echo'<h3>Add stuff to database</h3>
+			<p>
+				<a href="add_player.php?year='.$year.'">Add new player</a><br/>
+				<a href="add_result.php?year='.$year.'">Add new race result</a></br>
+				<a href="add_picks?year='.$year.'">Add player picks</a></br>
+			</p>';
+	
+	
+	
+	require_once'includes/footer.php';
 			
 
 ?>

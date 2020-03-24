@@ -1,5 +1,6 @@
 <?php
 
+	require_once'includes/header.php';
 	require_once'conf/db_conf.php';
 	require_once'conf/functions.php';
 	
@@ -20,18 +21,38 @@
 		
 		echo'<h3>'.$grand_prix_info['venue'].' GP '.$grand_prix_info['year'].' Final Result:</h3>
 		
-			 <p>
-				1st Place: '.$grand_prix_result['1st'].'<br/>
-				2nd Place: '.$grand_prix_result['2nd'].'</br>
-				3rd Place: '.$grand_prix_result['3rd'].'<br/>
-				4th Place: '.$grand_prix_result['4th'].'</br>
-				5th Place: '.$grand_prix_result['5th'].'<br/>
-				6th Place: '.$grand_prix_result['6th'].'</br>
-				7th Place: '.$grand_prix_result['7th'].'<br/>
-				8th Place: '.$grand_prix_result['8th'].'</br>
-				9th Place: '.$grand_prix_result['9th'].'<br/>
-				10th Place: '.$grand_prix_result['10th'].'</br>
-			</p>
+			 <table>
+				<tr>
+					<td>1st Place:</td> <td>'.$grand_prix_result['1st'].'</td>
+				</tr>
+				<tr>
+					<td>2nd Place:</td> <td>'.$grand_prix_result['2nd'].'</td>
+				</tr>
+				<tr>
+					<td>3rd Place:</td> <td>'.$grand_prix_result['3rd'].'</td>
+				</tr>
+				<tr>
+					<td>4th Place:</td> <td>'.$grand_prix_result['4th'].'</td>
+				</tr>
+				<tr>
+					<td>5th Place:</td> <td>'.$grand_prix_result['5th'].'</td>
+				</tr>
+				<tr>
+					<td>6th Place:</td> <td>'.$grand_prix_result['6th'].'</td>
+				</tr>
+				<tr>
+					<td>7th Place:</td> <td>'.$grand_prix_result['7th'].'</td>
+				</tr>
+				<tr>
+					<td>8th Place:</td> <td>'.$grand_prix_result['8th'].'</td>
+				</tr>
+				<tr>
+					<td>9th Place:</td> <td>'.$grand_prix_result['9th'].'</td>
+				</tr>
+				<tr>
+					<td>10th Place:</td> <td>'.$grand_prix_result['10th'].'</td>
+				</tr>
+			</table>
 				';
 				
 		$countScore = new countScore;
@@ -41,10 +62,5 @@
 	
 	}
 	
-	
-	
-
-
-	
-	
+		require_once'includes/footer.php';
 ?>

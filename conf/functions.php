@@ -149,30 +149,26 @@
 					else{$p10 = '0';}
 					
 					$result = $p1+$p2+$p3+$p4+$p5+$p6+$p7+$p8+$p9+$p10;
-				
-					
-					
-					
-					echo'<p>'.$score2['user'].'\'s Picks for '.$grand_prix_info['venue'].':<br/>
-							1st: '.$score2['pick_1'].'<br/>
-							2nd: '.$score2['pick_2'].'<br/>
-							3rd: '.$score2['pick_3'].'<br/>
-							4th: '.$score2['pick_4'].'<br/>
-							5th: '.$score2['pick_5'].'<br/>
-							6th: '.$score2['pick_6'].'<br/>
-							7th: '.$score2['pick_7'].'<br/>
-							8th: '.$score2['pick_8'].'<br/>
-							9th: '.$score2['pick_9'].'<br/>
-							10th: '.$score2['pick_10'].'<br/>
-							Total score for this round: '.$result.'
-						</p>
-					';
 					
 					mysqli_query($connection, 'UPDATE player_picks SET score =\''.$result.'\' WHERE user = \''.$score2['user'].'\' AND grand_prix =\''.$grand_prix_result['venue'].'\'');
 			}
 			}
 					
+					echo'<h3>Results for this round</h3>
+							<p>';
+					$query4 = mysqli_query($connection, 'SELECT * FROM player_picks WHERE grand_prix =\''.$_GET['gp'].'\' ORDER BY score DESC');
+					$a = 1;
+					while($total_score = mysqli_fetch_assoc($query4)) {
+		
+					echo''.$a.substr(date('jS', mktime(0,0,0,1,($a%10==0?9:($a%100>20?$a%10:$a%100)),2000)),-2).': '.$total_score['user'].': '.$total_score['score'].'<br/>';
+		
+					$a++;
+					}
 					
+					echo'<br/>
+						 <br/>
+							<a href="game_overview.php?year=2020">Return to game overview</a>
+						</p>';
 					
 					
 			
