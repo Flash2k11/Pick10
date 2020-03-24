@@ -2,7 +2,6 @@
 
 	class countScore {
 		
-		public $connection;
 				
 		function calculate_score($con, $gpi) {
 			
@@ -168,6 +167,8 @@
 							Total score for this round: '.$result.'
 						</p>
 					';
+					
+					mysqli_query($connection, 'UPDATE player_picks SET score =\''.$result.'\' WHERE user = \''.$score2['user'].'\' AND grand_prix =\''.$grand_prix_result['venue'].'\'');
 			}
 			}
 					
